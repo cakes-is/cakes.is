@@ -94,7 +94,7 @@ export default async function HomePage() {
           <Container>
             <SectionHeading
               title="Vinsælar kökur"
-              subtitle="Handvaldar uppáhaldsur viðskiptavina okkar"
+              subtitle="Handvaldar uppáhalds kökur viðskiptavina okkar"
               centered
             />
             <FeaturedCakesGrid cakes={featuredCakes} />
