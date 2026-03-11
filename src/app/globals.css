@@ -2,28 +2,28 @@
 
 @theme inline {
   /* Bakery color palette */
-  --color-cream: #FFF8F0;
-  --color-cream-dark: #FAF0E4;
-  --color-parchment: #F5E6D3;
-  --color-rose-light: #FDE8E8;
-  --color-rose: #F4C5C5;
-  --color-rose-medium: #E8A0A0;
-  --color-rose-dark: #C97B7B;
-  --color-blush: #FADADD;
-  --color-gold: #C9A96E;
-  --color-gold-light: #E8D5B0;
-  --color-gold-dark: #A07840;
-  --color-brown-light: #D4A889;
-  --color-brown: #8B6F5E;
-  --color-brown-dark: #5C3D2E;
-  --color-chocolate: #3D1C0A;
-  --color-warm-white: #FFFCF8;
+  --color-cream: #fff8f0;
+  --color-cream-dark: #faf0e4;
+  --color-parchment: #f5e6d3;
+  --color-rose-light: #fde8e8;
+  --color-rose: #f4c5c5;
+  --color-rose-medium: #e8a0a0;
+  --color-rose-dark: #c97b7b;
+  --color-blush: #fadadd;
+  --color-gold: #c9a96e;
+  --color-gold-light: #e8d5b0;
+  --color-gold-dark: #a07840;
+  --color-brown-light: #d4a889;
+  --color-brown: #8b6f5e;
+  --color-brown-dark: #5c3d2e;
+  --color-chocolate: #3d1c0a;
+  --color-warm-white: #fffcf8;
 
   /* Semantic aliases */
   --color-background: var(--color-cream);
   --color-surface: var(--color-warm-white);
   --color-accent: var(--color-rose-dark);
-  --color-accent-hover: #B56A6A;
+  --color-accent-hover: #b56a6a;
   --color-heading: var(--color-brown-dark);
   --color-body: var(--color-brown-dark);
   --color-muted: var(--color-brown);
@@ -54,7 +54,7 @@
   /* Shadows */
   --shadow-card: 0 2px 16px 0 rgba(92, 61, 46, 0.08);
   --shadow-card-hover: 0 8px 32px 0 rgba(92, 61, 46, 0.14);
-  --shadow-modal: 0 20px 60px 0 rgba(92, 61, 46, 0.20);
+  --shadow-modal: 0 20px 60px 0 rgba(92, 61, 46, 0.2);
 
   /* Transitions */
   --transition-base: 200ms ease;

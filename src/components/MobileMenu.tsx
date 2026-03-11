@@ -19,31 +19,31 @@ export default function MobileMenu() {
         onClick={() => setIsOpen(!isOpen)}
         aria-label={isOpen ? "Loka valmynd" : "Opna valmynd"}
         aria-expanded={isOpen}
-        className="lg:hidden flex flex-col gap-1.5 p-2 rounded-md hover:bg-cream-dark transition-colors duration-200"
+        className="hover:bg-cream-dark flex flex-col gap-1.5 rounded-md p-2 transition-colors duration-200 lg:hidden"
       >
         <span
           className={[
-            "block w-5 h-0.5 bg-brown-dark transition-all duration-300 origin-center",
-            isOpen ? "rotate-45 translate-y-2" : "",
+            "bg-brown-dark block h-0.5 w-5 origin-center transition-all duration-300",
+            isOpen ? "translate-y-2 rotate-45" : "",
           ].join(" ")}
         />
         <span
           className={[
-            "block w-5 h-0.5 bg-brown-dark transition-all duration-300",
+            "bg-brown-dark block h-0.5 w-5 transition-all duration-300",
             isOpen ? "opacity-0" : "",
           ].join(" ")}
         />
         <span
           className={[
-            "block w-5 h-0.5 bg-brown-dark transition-all duration-300 origin-center",
-            isOpen ? "-rotate-45 -translate-y-2" : "",
+            "bg-brown-dark block h-0.5 w-5 origin-center transition-all duration-300",
+            isOpen ? "-translate-y-2 -rotate-45" : "",
           ].join(" ")}
         />
       </button>
 
       <div
         className={[
-          "lg:hidden fixed inset-x-0 top-[64px] bg-warm-white border-b border-border shadow-lg transition-all duration-300 overflow-hidden",
+          "bg-warm-white border-border fixed inset-x-0 top-[64px] overflow-hidden border-b shadow-lg transition-all duration-300 lg:hidden",
           isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0",
         ].join(" ")}
       >
@@ -54,7 +54,7 @@ export default function MobileMenu() {
                 <Link
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="block px-6 py-3 text-brown-dark font-medium hover:bg-cream-dark hover:text-rose-dark transition-colors duration-200"
+                  className="text-brown-dark hover:bg-cream-dark hover:text-rose-dark block px-6 py-3 font-medium transition-colors duration-200"
                 >
                   {link.label}
                 </Link>
@@ -64,7 +64,7 @@ export default function MobileMenu() {
               <Link
                 href="/order"
                 onClick={() => setIsOpen(false)}
-                className="inline-flex items-center justify-center w-full px-6 py-3 rounded-full bg-rose-dark text-warm-white font-medium hover:bg-accent-hover transition-colors duration-200"
+                className="bg-rose-dark text-warm-white hover:bg-accent-hover inline-flex w-full items-center justify-center rounded-full px-6 py-3 font-medium transition-colors duration-200"
               >
                 Panta köku
               </Link>

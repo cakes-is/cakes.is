@@ -51,16 +51,16 @@ export default async function AboutPage() {
           subtitle="Kyntu þér sögu BeibíCakes og hvað knýr okkur áfram"
         />
 
-        <div className="max-w-3xl mx-auto">
+        <div className="mx-auto max-w-3xl">
           <div
-            className="rounded-2xl overflow-hidden mb-12 h-48 sm:h-64 flex items-center justify-center"
+            className="mb-12 flex h-48 items-center justify-center overflow-hidden rounded-2xl sm:h-64"
             aria-hidden="true"
             style={{
               background:
                 "radial-gradient(ellipse at 50% 50%, #FDE8E8 0%, #FAF0E4 60%, #F5E6D3 100%)",
             }}
           >
-            <span className="font-display text-5xl text-rose-medium/40 select-none">
+            <span className="font-display text-rose-medium/40 text-5xl select-none">
               BeibíCakes
             </span>
           </div>
@@ -68,16 +68,16 @@ export default async function AboutPage() {
           <div className="space-y-12">
             {orderedSections.map((key, index) => (
               <section key={key} aria-labelledby={`section-${key}`}>
-                <div className="flex items-center gap-4 mb-4">
+                <div className="mb-4 flex items-center gap-4">
                   <span
-                    className="flex-shrink-0 w-8 h-8 rounded-full bg-rose-light border border-rose-medium flex items-center justify-center text-rose-dark text-sm font-bold font-display"
+                    className="bg-rose-light border-rose-medium text-rose-dark font-display flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border text-sm font-bold"
                     aria-hidden="true"
                   >
                     {index + 1}
                   </span>
                   <h2
                     id={`section-${key}`}
-                    className="font-display text-2xl text-brown-dark"
+                    className="font-display text-brown-dark text-2xl"
                   >
                     {sectionLabels[key] ?? key}
                   </h2>
@@ -95,11 +95,12 @@ export default async function AboutPage() {
             className="mt-16 rounded-2xl p-8 text-center"
             style={{ background: "var(--color-cream-dark)" }}
           >
-            <p className="font-display text-xl text-brown-dark mb-2">
+            <p className="font-display text-brown-dark mb-2 text-xl">
               Tilbúin(n) til að panta?
             </p>
             <p className="text-brown mb-6">
-              Við hlökkum til að heyra frá þér og hjálpa þér að búa til eitthvað sérstakt.
+              Við hlökkum til að heyra frá þér og hjálpa þér að búa til eitthvað
+              sérstakt.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Button href="/order">Panta köku</Button>

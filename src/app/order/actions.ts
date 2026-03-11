@@ -63,7 +63,8 @@ export async function submitOrder(
   } catch {
     return {
       status: "error",
-      message: "Eitthvað fór úrskeiðis. Vinsamlegast reyndu aftur eða hafðu samband við okkur beint á orders@cakes.is.",
+      message:
+        "Eitthvað fór úrskeiðis. Vinsamlegast reyndu aftur eða hafðu samband við okkur beint á orders@cakes.is.",
     };
   }
 }

@@ -44,24 +44,24 @@ export default function CakeModal({ cake, onClose }: CakeModalProps) {
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
     >
       <div
-        className="absolute inset-0 bg-chocolate/60 backdrop-blur-sm"
+        className="bg-chocolate/60 absolute inset-0 backdrop-blur-sm"
         onClick={onClose}
         aria-hidden="true"
       />
 
       <div
-        className="relative z-10 bg-warm-white rounded-2xl overflow-hidden max-w-2xl w-full max-h-[90vh] flex flex-col"
+        className="bg-warm-white relative z-10 flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl"
         style={{ boxShadow: "var(--shadow-modal)" }}
       >
         <button
           onClick={onClose}
           aria-label="Loka"
-          className="absolute top-4 right-4 z-20 w-9 h-9 flex items-center justify-center rounded-full bg-warm-white/90 text-brown hover:text-brown-dark hover:bg-cream transition-colors duration-200 text-xl leading-none"
+          className="bg-warm-white/90 text-brown hover:text-brown-dark hover:bg-cream absolute top-4 right-4 z-20 flex h-9 w-9 items-center justify-center rounded-full text-xl leading-none transition-colors duration-200"
         >
           &times;
         </button>
 
-        <div className="relative aspect-[16/9] flex-shrink-0 bg-cream-dark overflow-hidden">
+        <div className="bg-cream-dark relative aspect-[16/9] flex-shrink-0 overflow-hidden">
           {cake.imageUrl && !imgError ? (
             <Image
               src={cake.imageUrl}
@@ -73,31 +73,31 @@ export default function CakeModal({ cake, onClose }: CakeModalProps) {
               priority
             />
           ) : (
-            <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-rose-light via-cream-dark to-parchment">
+            <div className="from-rose-light via-cream-dark to-parchment absolute inset-0 flex items-center justify-center bg-gradient-to-br">
               <span className="text-8xl opacity-20 select-none">k</span>
             </div>
           )}
         </div>
 
-        <div className="p-6 overflow-y-auto">
-          <div className="flex items-start justify-between gap-4 mb-3">
-            <h2 className="font-display text-2xl text-brown-dark leading-snug">
+        <div className="overflow-y-auto p-6">
+          <div className="mb-3 flex items-start justify-between gap-4">
+            <h2 className="font-display text-brown-dark text-2xl leading-snug">
               {cake.name}
             </h2>
-            <span className="flex-shrink-0 inline-block px-3 py-1 rounded-full bg-cream-dark text-xs font-medium text-brown-dark border border-border">
+            <span className="bg-cream-dark text-brown-dark border-border inline-block flex-shrink-0 rounded-full border px-3 py-1 text-xs font-medium">
               {cake.category}
             </span>
           </div>
 
-          <p className="text-brown leading-relaxed mb-5">{cake.description}</p>
+          <p className="text-brown mb-5 leading-relaxed">{cake.description}</p>
 
-          <div className="flex items-center justify-between pt-4 border-t border-border">
-            <span className="text-xl font-semibold text-rose-dark">
+          <div className="border-border flex items-center justify-between border-t pt-4">
+            <span className="text-rose-dark text-xl font-semibold">
               {cake.price}
             </span>
             <a
               href="/order"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-rose-dark text-warm-white text-sm font-medium hover:bg-accent-hover transition-colors duration-200"
+              className="bg-rose-dark text-warm-white hover:bg-accent-hover inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors duration-200"
             >
               Panta
             </a>

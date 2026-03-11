@@ -5,18 +5,19 @@ export default function Footer() {
   return (
     <footer className="bg-brown-dark text-cream mt-auto">
       <Container>
-        <div className="py-12 grid grid-cols-1 sm:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-8 py-12 sm:grid-cols-3">
           <div>
-            <h2 className="font-display text-2xl text-cream mb-2">
+            <h2 className="font-display text-cream mb-2 text-2xl">
               BeibíCakes
             </h2>
             <p className="text-cream/70 text-sm leading-relaxed">
-              Sérsmíðaðar kökur fyrir sérstök tilefni. Gerðar með ást og vandvirkni.
+              Sérsmíðaðar kökur fyrir sérstök tilefni. Gerðar með ást og
+              vandvirkni.
             </p>
           </div>
 
           <nav aria-label="Tengilsíður">
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-gold mb-4">
+            <h3 className="text-gold mb-4 text-sm font-semibold tracking-widest uppercase">
               Vefur
             </h3>
             <ul className="space-y-2">
@@ -29,7 +30,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-cream/70 text-sm hover:text-cream transition-colors duration-200"
+                    className="text-cream/70 hover:text-cream text-sm transition-colors duration-200"
                   >
                     {link.label}
                   </Link>
@@ -39,7 +40,7 @@ export default function Footer() {
           </nav>
 
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-gold mb-4">
+            <h3 className="text-gold mb-4 text-sm font-semibold tracking-widest uppercase">
               Hafa samband
             </h3>
             <ul className="space-y-2">
@@ -48,7 +49,7 @@ export default function Footer() {
                   href="https://instagram.com/BeibíCakes"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-cream/70 text-sm hover:text-cream transition-colors duration-200 flex items-center gap-2"
+                  className="text-cream/70 hover:text-cream flex items-center gap-2 text-sm transition-colors duration-200"
                 >
                   <span aria-hidden="true">@</span>
                   <span>BeibíCakes</span>
@@ -57,7 +58,7 @@ export default function Footer() {
               <li>
                 <a
                   href="mailto:orders@cakes.is"
-                  className="text-cream/70 text-sm hover:text-cream transition-colors duration-200"
+                  className="text-cream/70 hover:text-cream text-sm transition-colors duration-200"
                 >
                   orders@cakes.is
                 </a>
@@ -66,13 +67,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-cream/10 py-6 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p className="text-cream/50 text-sm">
-            &copy; 2026 BeibíCakes
-          </p>
-          <p className="text-cream/30 text-xs">
-            Gerð með ást á Íslandi
-          </p>
+        <div className="border-cream/10 flex flex-col items-center justify-between gap-2 border-t py-6 sm:flex-row">
+          <p className="text-cream/50 text-sm">&copy; 2026 BeibíCakes</p>
+          <p className="text-cream/30 text-xs">Gerð með ást á Íslandi</p>
         </div>
       </Container>
     </footer>

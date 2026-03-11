@@ -13,20 +13,20 @@ export default function OrderPage() {
   return (
     <div className="py-16">
       <Container>
-        <div className="max-w-2xl mx-auto">
+        <div className="mx-auto max-w-2xl">
           <SectionHeading
             title="Panta köku"
             subtitle="Fylltu út formið hér að neðan og við munum hafa samband við þig fljótlega."
           />
 
           <div
-            className="bg-warm-white rounded-2xl p-8 sm:p-10 border border-border"
+            className="bg-warm-white border-border rounded-2xl border p-8 sm:p-10"
             style={{ boxShadow: "var(--shadow-card)" }}
           >
             <OrderForm />
           </div>
 
-          <p className="mt-6 text-center text-sm text-brown/70">
+          <p className="text-brown/70 mt-6 text-center text-sm">
             Eða sendu okkur tölvupóst beint á{" "}
             <a
               href="mailto:orders@cakes.is"

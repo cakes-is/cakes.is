@@ -41,8 +41,7 @@ export default function RootLayout({
     name: "BeibíCakes",
     url: "https://cakes.is",
     email: "orders@cakes.is",
-    description:
-      "Sérsmíðaðar kökur fyrir sérstök tilefni á Íslandi.",
+    description: "Sérsmíðaðar kökur fyrir sérstök tilefni á Íslandi.",
     priceRange: "$$",
     address: {
       "@type": "PostalAddress",
@@ -59,7 +58,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-screen flex flex-col antialiased">
+      <body className="flex min-h-screen flex-col antialiased">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

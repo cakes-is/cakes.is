@@ -67,9 +67,7 @@ export async function getFeaturedCakes(): Promise<Cake[]> {
   return cakes.filter((cake) => cake.featured);
 }
 
-export async function getAboutContent(): Promise<
-  Record<string, string>
-> {
+export async function getAboutContent(): Promise<Record<string, string>> {
   try {
     const doc = await getDoc();
     const sheet = doc.sheetsByTitle["About"];

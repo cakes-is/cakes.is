@@ -31,15 +31,17 @@ export default function CakeCard({ cake, onOpen }: CakeCardProps) {
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       className={[
-        "group bg-warm-white rounded-xl overflow-hidden transition-all duration-300",
-        "border border-border shadow-card",
-        onOpen ? "cursor-pointer hover:shadow-card-hover hover:-translate-y-1" : "",
+        "group bg-warm-white overflow-hidden rounded-xl transition-all duration-300",
+        "border-border shadow-card border",
+        onOpen
+          ? "hover:shadow-card-hover cursor-pointer hover:-translate-y-1"
+          : "",
       ].join(" ")}
       style={{
         boxShadow: "var(--shadow-card)",
       }}
     >
-      <div className="relative aspect-[4/3] overflow-hidden bg-cream-dark">
+      <div className="bg-cream-dark relative aspect-[4/3] overflow-hidden">
         {cake.imageUrl && !imgError ? (
           <Image
             src={cake.imageUrl}
@@ -50,30 +52,30 @@ export default function CakeCard({ cake, onOpen }: CakeCardProps) {
             onError={() => setImgError(true)}
           />
         ) : (
-          <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-rose-light via-cream-dark to-parchment">
+          <div className="from-rose-light via-cream-dark to-parchment absolute inset-0 flex items-center justify-center bg-gradient-to-br">
             <span className="text-5xl opacity-30 select-none">k</span>
           </div>
         )}
         <div className="absolute top-3 left-3">
-          <span className="inline-block px-2.5 py-1 rounded-full bg-warm-white/90 backdrop-blur-sm text-xs font-medium text-brown-dark border border-border">
+          <span className="bg-warm-white/90 text-brown-dark border-border inline-block rounded-full border px-2.5 py-1 text-xs font-medium backdrop-blur-sm">
             {cake.category}
           </span>
         </div>
       </div>
 
       <div className="p-4">
-        <h3 className="font-display text-lg text-brown-dark mb-1 leading-snug">
+        <h3 className="font-display text-brown-dark mb-1 text-lg leading-snug">
           {cake.name}
         </h3>
-        <p className="text-brown text-sm leading-relaxed line-clamp-2 mb-3 min-h-[2.5rem]">
+        <p className="text-brown mb-3 line-clamp-2 min-h-[2.5rem] text-sm leading-relaxed">
           {cake.description}
         </p>
-        <div className="flex items-center justify-between pt-2 border-t border-border">
-          <span className="text-sm font-semibold text-rose-dark">
+        <div className="border-border flex items-center justify-between border-t pt-2">
+          <span className="text-rose-dark text-sm font-semibold">
             {cake.price}
           </span>
           {onOpen && (
-            <span className="text-xs text-brown opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+            <span className="text-brown text-xs opacity-0 transition-opacity duration-200 group-hover:opacity-100">
               Skoða &rarr;
             </span>
           )}

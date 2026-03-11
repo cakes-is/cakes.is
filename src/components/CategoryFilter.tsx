@@ -25,7 +25,7 @@ export default function CategoryFilter({
             onClick={() => onChange(category)}
             aria-pressed={isActive}
             className={[
-              "px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border",
+              "rounded-full border px-4 py-2 text-sm font-medium transition-all duration-200",
               isActive
                 ? "bg-rose-dark text-warm-white border-rose-dark shadow-sm"
                 : "bg-warm-white text-brown-dark border-border hover:border-rose-medium hover:bg-rose-light",
