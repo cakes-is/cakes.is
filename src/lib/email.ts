@@ -1,14 +1,20 @@
 import { Resend } from "resend";
 import type { OrderFormData } from "./types";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+function getResend() {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    throw new Error("Missing RESEND_API_KEY");
+  }
+  return new Resend(apiKey);
+}
 
 export async function sendOrderNotification(
   order: OrderFormData,
 ): Promise<void> {
   const recipientEmail = process.env.ORDER_EMAIL || "orders@cakes.is";
 
-  await resend.emails.send({
+  await getResend().emails.send({
     from: "BeibíCakes <noreply@cakes.is>",
     to: [recipientEmail],
     subject: `Ný pöntun frá ${order.name}`,
