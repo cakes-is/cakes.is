@@ -47,7 +47,7 @@ export default function RootLayout({
       "@type": "PostalAddress",
       addressCountry: "IS",
     },
-    sameAs: ["https://www.instagram.com/BeibíCakes"],
+    sameAs: ["https://www.instagram.com/beibi_cakes"],
   };
 
   return (

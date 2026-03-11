@@ -46,7 +46,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="https://instagram.com/BeibíCakes"
+                  href="https://instagram.com/beibi_cakes"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-cream/70 hover:text-cream flex items-center gap-2 text-sm transition-colors duration-200"
