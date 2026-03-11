@@ -39,7 +39,9 @@ export default async function AboutPage() {
     "values",
     "process",
     ...Object.keys(sections).filter(
-      (k) => !["story", "mission", "values", "process"].includes(k),
+      (k) =>
+        !["story", "mission", "values", "process"].includes(k) &&
+        !k.includes("image"),
     ),
   ].filter((k) => sections[k]);
 
