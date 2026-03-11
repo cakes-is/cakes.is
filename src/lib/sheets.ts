@@ -2,6 +2,15 @@ import { GoogleSpreadsheet } from "google-spreadsheet";
 import { JWT } from "google-auth-library";
 import type { Cake, AboutContent } from "./types";
 
+function resolveImageUrl(input: string): string {
+  const clean = input.trim().replace(/[\r\n]+/g, "");
+  if (clean.startsWith("http")) return clean;
+  const name = clean.replace(/\s+/g, "-");
+  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+  if (!cloudName) return name;
+  return `https://res.cloudinary.com/${cloudName}/image/upload/${name}`;
+}
+
 function getAuth() {
   const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
   const key = process.env.GOOGLE_PRIVATE_KEY;
@@ -50,7 +59,11 @@ export async function getCakes(): Promise<Cake[]> {
         name: row.get("name") || "",
         description: row.get("description") || "",
         price: row.get("price") || "",
-        imageUrl: row.get("image_url") || "",
+        imageUrls: (row.get("image_url") || "")
+          .split(",")
+          .map((s: string) => s.trim())
+          .filter(Boolean)
+          .map(resolveImageUrl),
         category: row.get("category") || "Annað",
         featured: row.get("featured")?.toLowerCase() === "true",
         published: row.get("published")?.toLowerCase() !== "false",

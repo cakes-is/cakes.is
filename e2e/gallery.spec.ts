@@ -21,7 +21,9 @@ test.describe("Gallery page", () => {
       "Annað",
     ];
     for (const category of categories) {
-      await expect(page.getByRole("button", { name: category })).toBeVisible();
+      await expect(
+        page.getByRole("button", { name: category, exact: true }),
+      ).toBeVisible();
     }
   });
 

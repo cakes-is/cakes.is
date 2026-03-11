@@ -2,7 +2,7 @@ export interface Cake {
   name: string;
   description: string;
   price: string;
-  imageUrl: string;
+  imageUrls: string[];
   category: string;
   featured: boolean;
   published: boolean;

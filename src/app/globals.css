@@ -126,3 +126,7 @@ select {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-rose-dark);
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

@@ -159,12 +159,10 @@ Cloudinary hosts the cake photos. The website uses the image URLs stored in the 
 1. From the Cloudinary dashboard, go to **Media Library** in the left sidebar.
 2. Click the **Upload** button.
 3. Drag your cake photos in, or click to select files from your computer. JPG or WebP at 1200px wide is a good target size.
-4. Once uploaded, click on any image to open it.
-5. Look for the **Copy URL** option or click the image URL shown below the preview. It looks like:
-   ```
-   https://res.cloudinary.com/your-cloud-name/image/upload/v1234567890/your-image.jpg
-   ```
-6. This full URL goes into the `image_url` column in your Google Sheet.
+4. Give each image a short, descriptive name (e.g. `sukkuladi-1`, `brudkaup-front`). You can rename after uploading by clicking the image and editing its name. You can organize images into folders in Cloudinary if you like — it won't affect the URLs.
+5. In the Google Sheet `image_url` column, just type the **image name** (the public ID shown in Cloudinary) — no need for the full URL. For example: `sukkuladi-1`. The website builds the full Cloudinary URL automatically.
+6. For multiple images (shown as a carousel on the site), separate names with commas: `sukkuladi-1, sukkuladi-2, sukkuladi-3`.
+7. Full URLs (starting with `https://`) also work if you ever need to link an image from another source.
 
 ### 3.4 Free Tier Limits
 
@@ -310,11 +308,11 @@ All content management happens directly in the Google Sheet. No code changes nee
 3. Fill in each column:
    - `name`: the name of the cake (e.g. `Súkkulaðikaka`)
    - `description`: a few sentences describing it
-   - `price`: the price range as a text string (e.g. `8.000 - 12.000 kr.`)
-   - `image_url`: the full Cloudinary URL for the photo (see Section 3.3)
-   - `category`: one of `Afmaeli`, `Brudkaup`, `Skirn`, or `Annad`
-   - `featured`: `true` or `false`
-   - `published`: `true` or `false`
+   - `price`: just type the number (e.g. `8900`) — the sheet auto-formats it as `8.900 kr.` For price ranges, type it as text (e.g. `25.000 - 45.000 kr.`)
+   - `image_url`: just the image name from Cloudinary (e.g. `sukkuladi-1`). For multiple photos, separate with commas (e.g. `sukkuladi-1, sukkuladi-2`) — the website shows a swipeable gallery. Full URLs starting with `https://` also work.
+   - `category`: pick from the dropdown (Afmæli, Brúðkaup, Ferming, Skírn, Annað)
+   - `featured`: pick from the dropdown (`true` or `false`)
+   - `published`: pick from the dropdown (`true` or `false`)
 
 The website refreshes its data every 5 minutes, so new cakes show up on the site shortly after you save the sheet.
 
@@ -338,9 +336,8 @@ The cake disappears from the website without you having to delete the row. To br
 1. Log in to [cloudinary.com](https://cloudinary.com).
 2. Go to **Media Library** and click **Upload**.
 3. Upload the image file. A good size is 1200px wide, saved as JPG or WebP.
-4. Once uploaded, click the image to open its detail view.
-5. Look for the **Copy URL** button or copy the URL shown in the image details panel. It starts with `https://res.cloudinary.com/`.
-6. Paste that URL into the `image_url` column for the cake in your Google Sheet.
+4. Note the image name (public ID) shown in Cloudinary.
+5. Type that name into the `image_url` column for the cake in your Google Sheet. For multiple images, separate with commas.
 
 ---
 

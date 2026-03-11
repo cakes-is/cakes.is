@@ -11,6 +11,7 @@ interface CakeCardProps {
 
 export default function CakeCard({ cake, onOpen }: CakeCardProps) {
   const [imgError, setImgError] = useState(false);
+  const thumbnailUrl = cake.imageUrls[0];
 
   const handleClick = () => {
     if (onOpen) onOpen(cake);
@@ -42,9 +43,9 @@ export default function CakeCard({ cake, onOpen }: CakeCardProps) {
       }}
     >
       <div className="bg-cream-dark relative aspect-[4/3] overflow-hidden">
-        {cake.imageUrl && !imgError ? (
+        {thumbnailUrl && !imgError ? (
           <Image
-            src={cake.imageUrl}
+            src={thumbnailUrl}
             alt={cake.name}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

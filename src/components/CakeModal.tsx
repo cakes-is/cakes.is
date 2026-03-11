@@ -1,9 +1,8 @@
 "use client";
 
-import { useEffect, useCallback } from "react";
+import { useEffect, useCallback, useState, useRef } from "react";
 import Image from "next/image";
 import type { Cake } from "@/lib/types";
-import { useState } from "react";
 
 interface CakeModalProps {
   cake: Cake | null;
@@ -11,7 +10,9 @@ interface CakeModalProps {
 }
 
 export default function CakeModal({ cake, onClose }: CakeModalProps) {
-  const [imgError, setImgError] = useState(false);
+  const [imgErrors, setImgErrors] = useState<Set<number>>(new Set());
+  const [activeIndex, setActiveIndex] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -31,10 +32,37 @@ export default function CakeModal({ cake, onClose }: CakeModalProps) {
   }, [cake, handleKeyDown]);
 
   useEffect(() => {
-    setImgError(false);
+    setImgErrors(new Set());
+    setActiveIndex(0);
+    if (scrollRef.current) {
+      scrollRef.current.scrollLeft = 0;
+    }
   }, [cake]);
 
+  const handleImgError = (index: number) => {
+    setImgErrors((prev) => new Set(prev).add(index));
+  };
+
+  const scrollTo = (index: number) => {
+    if (!scrollRef.current) return;
+    const child = scrollRef.current.children[index] as HTMLElement;
+    if (child) {
+      child.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
+    }
+    setActiveIndex(index);
+  };
+
+  const handleScroll = () => {
+    if (!scrollRef.current) return;
+    const { scrollLeft, clientWidth } = scrollRef.current;
+    const newIndex = Math.round(scrollLeft / clientWidth);
+    setActiveIndex(newIndex);
+  };
+
   if (!cake) return null;
+
+  const images = cake.imageUrls.filter((_, i) => !imgErrors.has(i));
+  const hasMultiple = cake.imageUrls.length > 1;
 
   return (
     <div
@@ -61,19 +89,87 @@ export default function CakeModal({ cake, onClose }: CakeModalProps) {
           &times;
         </button>
 
-        <div className="bg-cream-dark relative aspect-[16/9] flex-shrink-0 overflow-hidden">
-          {cake.imageUrl && !imgError ? (
-            <Image
-              src={cake.imageUrl}
-              alt={cake.name}
-              fill
-              sizes="(max-width: 768px) 100vw, 672px"
-              className="object-cover"
-              onError={() => setImgError(true)}
-              priority
-            />
+        {/* Image area — carousel if multiple, single image if one */}
+        <div className="relative flex-shrink-0">
+          {cake.imageUrls.length > 0 ? (
+            <>
+              <div
+                ref={scrollRef}
+                onScroll={handleScroll}
+                className="flex snap-x snap-mandatory overflow-x-auto scrollbar-hide"
+                style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+              >
+                {cake.imageUrls.map((url, i) => (
+                  <div
+                    key={i}
+                    className="relative aspect-[4/3] w-full flex-shrink-0 snap-center"
+                  >
+                    {!imgErrors.has(i) ? (
+                      <Image
+                        src={url}
+                        alt={`${cake.name}${hasMultiple ? ` (${i + 1}/${cake.imageUrls.length})` : ""}`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 672px"
+                        className="object-contain bg-cream-dark"
+                        onError={() => handleImgError(i)}
+                        priority={i === 0}
+                      />
+                    ) : (
+                      <div className="from-rose-light via-cream-dark to-parchment absolute inset-0 flex items-center justify-center bg-gradient-to-br">
+                        <span className="text-8xl opacity-20 select-none">
+                          k
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              {/* Navigation arrows */}
+              {hasMultiple && images.length > 1 && (
+                <>
+                  {activeIndex > 0 && (
+                    <button
+                      onClick={() => scrollTo(activeIndex - 1)}
+                      aria-label="Fyrri mynd"
+                      className="bg-warm-white/80 text-brown-dark hover:bg-warm-white absolute top-1/2 left-3 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full shadow-md backdrop-blur-sm transition-colors"
+                    >
+                      &#8249;
+                    </button>
+                  )}
+                  {activeIndex < cake.imageUrls.length - 1 && (
+                    <button
+                      onClick={() => scrollTo(activeIndex + 1)}
+                      aria-label="Næsta mynd"
+                      className="bg-warm-white/80 text-brown-dark hover:bg-warm-white absolute top-1/2 right-3 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full shadow-md backdrop-blur-sm transition-colors"
+                    >
+                      &#8250;
+                    </button>
+                  )}
+                </>
+              )}
+
+              {/* Dot indicators */}
+              {hasMultiple && images.length > 1 && (
+                <div className="absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 gap-1.5">
+                  {cake.imageUrls.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => scrollTo(i)}
+                      aria-label={`Mynd ${i + 1}`}
+                      className={[
+                        "h-2 rounded-full transition-all duration-200",
+                        activeIndex === i
+                          ? "bg-warm-white w-4 shadow-sm"
+                          : "bg-warm-white/50 hover:bg-warm-white/75 w-2",
+                      ].join(" ")}
+                    />
+                  ))}
+                </div>
+              )}
+            </>
           ) : (
-            <div className="from-rose-light via-cream-dark to-parchment absolute inset-0 flex items-center justify-center bg-gradient-to-br">
+            <div className="from-rose-light via-cream-dark to-parchment aspect-[4/3] flex items-center justify-center bg-gradient-to-br">
               <span className="text-8xl opacity-20 select-none">k</span>
             </div>
           )}
