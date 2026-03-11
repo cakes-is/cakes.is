@@ -9,6 +9,7 @@ const initialState: OrderActionState = { status: "idle" };
 const cakeTypes = [
   "Afmæliskaka",
   "Brúðkaupskaka",
+  "Fermingarkaka",
   "Skírnar kaka",
   "Kökur fyrir partý",
   "Sérsniðin kaka",

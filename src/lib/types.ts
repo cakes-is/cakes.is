@@ -26,6 +26,7 @@ export const CATEGORIES = [
   "Allt",
   "Afmæli",
   "Brúðkaup",
+  "Ferming",
   "Skírn",
   "Annað",
 ] as const;
