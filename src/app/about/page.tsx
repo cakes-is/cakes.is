@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import { getAboutContent } from "@/lib/sheets";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import Button from "@/components/Button";
+
+export const metadata: Metadata = {
+  title: "Um okkur — BeibíCakes",
+  description:
+    "Kynntu þér sögu BeibíCakes. Sérsmíðaðar kökur búnar til með ást og vandvirkni á Íslandi.",
+};
 
 export const revalidate = 300;
 

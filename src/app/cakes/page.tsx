@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import { getCakes } from "@/lib/sheets";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import CakeGallery from "@/components/CakeGallery";
+
+export const metadata: Metadata = {
+  title: "Kökur — BeibíCakes",
+  description:
+    "Skoðaðu úrval okkar af sérsmíðuðum kökum. Afmæliskökur, brúðkaupskökur, skírnarveislukökur og fleira.",
+};
 
 export const revalidate = 300;
 

@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import OrderForm from "./OrderForm";
+
+export const metadata: Metadata = {
+  title: "Panta köku — BeibíCakes",
+  description:
+    "Pantaðu sérsmíðaða köku fyrir næsta tilefni. Fylltu út formið og við munum hafa samband við þig fljótlega.",
+};
 
 export default function OrderPage() {
   return (

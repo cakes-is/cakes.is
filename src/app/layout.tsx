@@ -35,8 +35,30 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Bakery",
+    name: "BeibíCakes",
+    url: "https://cakes.is",
+    email: "orders@cakes.is",
+    description:
+      "Sérsmíðaðar kökur fyrir sérstök tilefni á Íslandi.",
+    priceRange: "$$",
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "IS",
+    },
+    sameAs: ["https://www.instagram.com/BeibíCakes"],
+  };
+
   return (
     <html lang="is" className={`${playfair.variable} ${inter.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="min-h-screen flex flex-col antialiased">
         <Header />
         <main className="flex-1">{children}</main>
