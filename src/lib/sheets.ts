@@ -97,7 +97,7 @@ export async function getAboutContent(): Promise<Record<string, string>> {
       const key = row.get("key");
       const value = row.get("value");
       if (key && value) {
-        content[key] = value;
+        content[key] = key.includes("image") ? resolveImageUrl(value) : value;
       }
     }
 

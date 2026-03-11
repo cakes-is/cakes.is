@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { getFeaturedCakes } from "@/lib/sheets";
+import Image from "next/image";
+import { getFeaturedCakes, getAboutContent } from "@/lib/sheets";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import Button from "@/components/Button";
@@ -8,13 +9,17 @@ import FeaturedCakesGrid from "@/components/FeaturedCakesGrid";
 export const revalidate = 300;
 
 export default async function HomePage() {
-  const featuredCakes = await getFeaturedCakes();
+  const [featuredCakes, aboutContent] = await Promise.all([
+    getFeaturedCakes(),
+    getAboutContent(),
+  ]);
+  const heroImage = aboutContent.hero_image;
 
   return (
     <>
       <section
         aria-label="Kynning"
-        className="relative flex min-h-[85vh] items-center overflow-hidden"
+        className="relative overflow-hidden"
         style={{
           background:
             "radial-gradient(ellipse at 70% 40%, #FDE8E8 0%, #FFF8F0 40%, #FAF0E4 100%)",
@@ -31,43 +36,46 @@ export default async function HomePage() {
           }}
         />
 
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute top-0 right-0 h-full w-1/2 opacity-10"
-          style={{
-            backgroundImage: `repeating-linear-gradient(
-              45deg,
-              transparent,
-              transparent 40px,
-              rgba(201,109,110,0.3) 40px,
-              rgba(201,109,110,0.3) 41px
-            )`,
-          }}
-        />
-
-        <Container className="relative z-10 py-24">
-          <div className="max-w-2xl">
-            <p className="text-rose-dark mb-4 text-sm font-semibold tracking-[0.2em] uppercase">
-              Handsmíðaðar kökur
-            </p>
-            <h1 className="font-display text-brown-dark mb-6 text-5xl leading-tight sm:text-6xl lg:text-7xl">
-              BeibíCakes
-            </h1>
-            <p className="text-brown mb-3 max-w-xl text-xl leading-relaxed">
-              Sérsmíðaðar kökur fyrir sérstök tilefni
-            </p>
-            <p className="text-brown/80 mb-10 max-w-lg text-base leading-relaxed">
-              Hvert verk er hannað með ást og vandvirkni — frá einlægum
-              afmæliskökum til glæsilegra brúðkaupskaka.
-            </p>
-            <div className="flex flex-wrap items-center gap-4">
-              <Button href="/cakes" size="lg">
-                Skoða kökur
-              </Button>
-              <Button href="/order" variant="secondary" size="lg">
-                Panta köku
-              </Button>
+        <Container className="relative z-10">
+          <div className="flex min-h-[85vh] items-center gap-8 py-16 lg:gap-16">
+            <div className="max-w-xl flex-1">
+              <p className="text-rose-dark mb-4 text-sm font-semibold tracking-[0.2em] uppercase">
+                Handsmíðaðar kökur
+              </p>
+              <h1 className="font-display text-brown-dark mb-6 text-5xl leading-tight sm:text-6xl lg:text-7xl">
+                BeibíCakes
+              </h1>
+              <p className="text-brown mb-3 max-w-xl text-xl leading-relaxed">
+                Sérsmíðaðar kökur fyrir sérstök tilefni
+              </p>
+              <p className="text-brown/80 mb-10 max-w-lg text-base leading-relaxed">
+                Hvert verk er hannað með ást og vandvirkni — frá einlægum
+                afmæliskökum til glæsilegra brúðkaupskaka.
+              </p>
+              <div className="flex flex-wrap items-center gap-4">
+                <Button href="/cakes" size="lg">
+                  Skoða kökur
+                </Button>
+                <Button href="/order" variant="secondary" size="lg">
+                  Panta köku
+                </Button>
+              </div>
             </div>
+
+            {heroImage && (
+              <div className="hidden flex-1 lg:block">
+                <div className="relative aspect-[3/4] w-full max-w-lg overflow-hidden rounded-3xl shadow-xl ring-1 ring-black/5 ml-auto">
+                  <Image
+                    src={heroImage}
+                    alt="BeibíCakes — handsmíðuð kaka"
+                    fill
+                    sizes="(max-width: 1024px) 0vw, 50vw"
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+              </div>
+            )}
           </div>
         </Container>
 
@@ -144,10 +152,10 @@ export default async function HomePage() {
       >
         <Container>
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="font-display text-cream mb-4 text-3xl sm:text-4xl">
+            <h2 className="font-display text-white mb-4 text-3xl sm:text-4xl">
               Ertu tilbúin(n) að panta þína drauma köku?
             </h2>
-            <p className="text-cream/70 mb-8 text-lg">
+            <p className="text-white/80 mb-8 text-lg">
               Við erum hér til að hjálpa þér að skapa eitthvað sérstakt. Hafðu
               samband og við munum gera drauma þína að veruleika.
             </p>
