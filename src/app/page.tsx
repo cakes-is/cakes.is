@@ -40,13 +40,13 @@ export default async function HomePage() {
           <div className="flex min-h-[85vh] items-center gap-8 py-16 lg:gap-16">
             <div className="max-w-xl flex-1">
               <p className="text-rose-dark mb-4 text-sm font-semibold tracking-[0.2em] uppercase">
-                Handsmíðaðar kökur
+                Handgerðar kökur
               </p>
               <h1 className="font-display text-brown-dark mb-6 text-5xl leading-tight sm:text-6xl lg:text-7xl">
                 BeibíCakes
               </h1>
               <p className="text-brown mb-3 max-w-xl text-xl leading-relaxed">
-                Sérsmíðaðar kökur fyrir sérstök tilefni
+                Sérbakaðar kökur fyrir sérstök tilefni
               </p>
               <p className="text-brown/80 mb-10 max-w-lg text-base leading-relaxed">
                 Hvert verk er hannað með ást og vandvirkni — frá einlægum

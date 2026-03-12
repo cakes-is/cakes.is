@@ -19,12 +19,12 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "BeibíCakes — Sérsmíðaðar kökur",
+  title: "BeibíCakes — Sérbakaðar kökur",
   description:
-    "BeibíCakes — Sérsmíðaðar kökur fyrir sérstök tilefni. Afmæli, brúðkaup, skírn og fleira. Pantaðu þína drauma köku í dag.",
+    "BeibíCakes — Sérbakaðar kökur fyrir sérstök tilefni. Afmæli, brúðkaup, skírn og fleira. Pantaðu þína drauma köku í dag.",
   openGraph: {
-    title: "BeibíCakes — Sérsmíðaðar kökur",
-    description: "Sérsmíðaðar kökur fyrir sérstök tilefni.",
+    title: "BeibíCakes — Sérbakaðar kökur",
+    description: "Sérbakaðar kökur fyrir sérstök tilefni.",
     locale: "is_IS",
     type: "website",
   },
@@ -41,7 +41,7 @@ export default function RootLayout({
     name: "BeibíCakes",
     url: "https://cakes.is",
     email: "orders@cakes.is",
-    description: "Sérsmíðaðar kökur fyrir sérstök tilefni á Íslandi.",
+    description: "Sérbakaðar kökur fyrir sérstök tilefni á Íslandi.",
     priceRange: "$$",
     address: {
       "@type": "PostalAddress",

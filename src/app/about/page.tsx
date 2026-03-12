@@ -7,7 +7,7 @@ import Button from "@/components/Button";
 export const metadata: Metadata = {
   title: "Um okkur — BeibíCakes",
   description:
-    "Kynntu þér sögu BeibíCakes. Sérsmíðaðar kökur búnar til með ást og vandvirkni á Íslandi.",
+    "Kynntu þér sögu BeibíCakes. Sérbakaðar kökur búnar til með ást og vandvirkni á Íslandi.",
 };
 
 export const revalidate = 300;

@@ -11,7 +11,7 @@ export default function Footer() {
               BeibíCakes
             </h2>
             <p className="text-cream/70 text-sm leading-relaxed">
-              Sérsmíðaðar kökur fyrir sérstök tilefni. Gerðar með ást og
+              Sérbakaðar kökur fyrir sérstök tilefni. Gerðar með ást og
               vandvirkni.
             </p>
           </div>

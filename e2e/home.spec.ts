@@ -6,7 +6,7 @@ test.describe("Homepage", () => {
 
     await expect(page.locator("h1")).toContainText("BeibíCakes");
     await expect(
-      page.getByText("Sérsmíðaðar kökur fyrir sérstök tilefni", { exact: true }),
+      page.getByText("Sérbakaðar kökur fyrir sérstök tilefni", { exact: true }),
     ).toBeVisible();
 
     const cakesLink = page.getByRole("link", { name: "Skoða kökur" });
